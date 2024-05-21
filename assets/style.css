@@ -67,5 +67,53 @@ body{
     border-radius: 100px 0px 0px 0px;
 }
 
+.button-project{
+    width: 620px;
+    height: 100%;
+    padding: 40px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background: rgba(255,255,255, 0.10);
+    
+    border-bottom: 12px solid #D5963B;
+}
+
+.card-project{
+    width: 400px;
+    height: 560px;
+    background: rgba(255,255,255, 0.10);
+    padding: 20px;
+}
+
+.card-project .logo-project{
+    text-align: center;
+}
+
+.card-project .deskripsi-project{
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.service .service-body {
+    background-image: url('bg-s.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.card-service{
+    width: 360px;
+    height: 348px;
+    background-color: rgba(0, 0, 0, 0.4); /* 0.4 berarti 40% opacity */
+    text-align: start;
+    padding: 32px;
+    border-radius: 12px;
+
+}
+
 
 
