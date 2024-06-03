@@ -44,7 +44,7 @@ body{
     height: 890px;
 }
 
-.button-contact{
+.button-header{
     background-color: #D5963B;
     border-color: #D5963B;
     border-radius: 24px;
@@ -56,7 +56,7 @@ body{
     font-style: normal;
 }
 
-.button-contact:hover{
+.button-header:hover{
     background-color: #6F4200;
     border-color: #6F4200;
 }
@@ -68,7 +68,7 @@ body{
 }
 
 .button-project{
-    width: 620px;
+    width: 558px;
     height: 100%;
     padding: 40px;
 }
@@ -80,8 +80,8 @@ body{
 }
 
 .card-project{
-    width: 400px;
-    height: 560px;
+    width: 345px;
+    height: 510px;
     background: rgba(255,255,255, 0.10);
     padding: 20px;
 }
@@ -98,7 +98,7 @@ body{
     margin-bottom: 20px;
 }
 
-.service .service-body {
+.service  {
     background-image: url('bg-s.svg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -106,14 +106,49 @@ body{
 }
 
 .card-service{
-    width: 360px;
-    height: 348px;
+    width: 330px;
+    height: 320px;
     background-color: rgba(0, 0, 0, 0.4); /* 0.4 berarti 40% opacity */
     text-align: start;
     padding: 32px;
     border-radius: 12px;
-
 }
 
+.market{
+    background-color: #fff;
+    color: #0B2032;
+}
+
+.management{
+    background-color: #EDEDED;
+    color: #0B2032;
+}
+
+.card-profile{
+    background-color: #fff;
+    color: black;
+    padding: 20px;
+    border-radius: 20px;
+}
+.our-coverage{
+    background-color: #fff;
+}
+
+.button-contact{
+    background-color: #D5963B;
+    border-color: #D5963B;
+    border-radius: 24px;
+    font-size: 20px;
+    padding: 8px 28px;
+    color: white ;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.button-contact:hover{
+    background-color: #6F4200;
+    border-color: #6F4200;
+}
 
 
