@@ -1,0 +1,16 @@
+body{
+    background-color: #262A56;
+}
+
+.card-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+}
