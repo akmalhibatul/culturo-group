@@ -60,26 +60,62 @@
                     <div class="page-title fs-5 fw-bold mb-4">
                         Edit Layanan
                     </div>
-                    <form action="" method="post">
+                    <?php
+                    include('koneksi.php');
+
+                    if (isset($_GET['id_layanan'])) {
+                        $id_layanan = $_GET['id_layanan'];
+
+                        // Mengambil data layanan dari database
+                        $stmt = $koneksi->prepare("SELECT judul_layanan, deskripsi, gambar_layanan, id_user FROM tb_layanan WHERE id_layanan = ?");
+                        $stmt->bind_param("i", $id_layanan);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($result->num_rows > 0) {
+                            $data = $result->fetch_assoc();
+                            $judul_layanan = $data['judul_layanan'];
+                            $deskripsi = $data['deskripsi'];
+                            $gambar_layanan = $data['gambar_layanan'];
+                            $id_user = $data['id_user'];
+                        } else {
+                            echo "Data tidak ditemukan!";
+                            exit;
+                        }
+
+                        $stmt->close();
+                    } else {
+                        echo "ID layanan tidak ditemukan!";
+                        exit;
+                    }
+
+                    $koneksi->close();
+                    ?>
+                    <form action="update_layanan.php" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Judul Layanan</label>
-                                    <input class="form-control" placeholder="Masukan Judul...." type="text" id="st_name" name="st_name">
+                                    <input class="form-control" placeholder="Masukan Judul...." type="text" name="judul_layanan" value="<?= $judul_layanan; ?>" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Deskripsi</label>
-                                    <input class="form-control" placeholder="Masukan Deskripsi" type="tel" id="st_phone" name="st_phone">
+                                    <input class="form-control" placeholder="Masukan Deskripsi" type="tel" name="deskripsi" value="<?= $deskripsi; ?>" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Gambar Layanan</label>
-                                    <input class="form-control" type="file" name="st_image">
+                                    <?php if ($gambar_layanan) : ?>
+                                        <img src="images/layanan/<?php echo $gambar_layanan; ?>" alt="Gambar Layanan" width="100"><br>
+                                    <?php endif; ?>
+                                    <input class="form-control" type="file" id="gambar_layanan" name="gambar_layanan" accept="image/png, image/jpeg">
                                 </div>
                             </div>
+                            <input type="hidden" name="id_user" value="<?= $id_user; ?>">
+                            <input type="hidden" name="id_layanan" value="<?= $id_layanan; ?>">
                             <div class="col-12 mt-md-4">
                                 <div class="mb-3 px-2">
                                     <button type="submit" class="btn btn-success"> Submit </button>

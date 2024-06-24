@@ -60,25 +60,27 @@
                     <div class="page-title fs-5 fw-bold mb-4">
                         Tambah Portofolio
                     </div>
-                    <form action="" method="post">
+                    <form action="tambah_portofolio_proses.php" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Logo Perusahaan</label>
-                                    <input class="form-control" type="file" name="st_image">
+                                    <input type="file" id="logo_perusahaan" name="logo_perusahaan" class="form-control" accept="image/png, image/jpeg" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Deskripsi</label>
-                                    <input class="form-control" placeholder="Masukan Deskripsi" type="tel" id="st_phone" name="st_phone">
+                                    <textarea id="deskripsi" name="deskripsi" class="form-control" required></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Gambar portofolio</label>
-                                    <input class="form-control" type="file" name="st_image">
+                                    <input type="file" id="gambar_portofolio" name="gambar_portofolio" class="form-control" accept="image/png, image/jpeg" required>
                                 </div>
+                                <input type="hidden" name="id_user" value="1"> <!-- Menambahkan input id_user -->
+
                             </div>
                             <div class="col-12 mt-md-4">
                                 <div class="mb-3 px-2">

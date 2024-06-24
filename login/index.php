@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-body">
                 <img src="../assets/logo.png" alt="" class="img-fluid  mb-3">
-                <form action="../admin/">
+                <form action="proses_login.php" method="post">
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter email">

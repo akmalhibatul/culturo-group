@@ -60,26 +60,27 @@
                     <div class="page-title fs-5 fw-bold mb-4">
                         Tambah Layanan
                     </div>
-                    <form action="" method="post">
+                    <form action="tambah_layanan_proses.php" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Judul Layanan</label>
-                                    <input class="form-control" placeholder="Masukan Judul...." type="text" id="st_name" name="st_name">
+                                    <input class="form-control" placeholder="Masukan Judul...." type="text" name="judul_layanan">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Deskripsi</label>
-                                    <input class="form-control" placeholder="Masukan Deskripsi" type="tel" id="st_phone" name="st_phone">
+                                    <input class="form-control" placeholder="Masukan Deskripsi" type="tel" name="deskripsi">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Gambar Layanan</label>
-                                    <input class="form-control" type="file" name="st_image">
+                                    <input class="form-control" type="file" id="gambar_layanan" name="gambar_layanan" accept="image/png, image/jpeg" required>
                                 </div>
                             </div>
+                            <input type="hidden" name="id_user" value="1">
                             <div class="col-12 mt-md-4">
                                 <div class="mb-3 px-2">
                                     <button type="submit" class="btn btn-success"> Submit </button>

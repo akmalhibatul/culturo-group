@@ -467,26 +467,26 @@
                     <h1 style="font-size: 80px;color: #D5963B;" class="ubuntu-bold ">Discover How We Can Help You Innovate</h1>
                 </div>
                 <div class="col-md-5">
-                    <form action="">
+                    <form action="proses_kontak.php" method="post">
                         <div class="mb-3">
                             <label class="form-label">Name</label>
-                            <input type="text" class="form-control" placeholder="Enter your full name">
+                            <input type="text" class="form-control" name="nama_lengkap" placeholder="Enter your full name">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Company Name</label>
-                            <input type="text" class="form-control" placeholder="Enter your company name">
+                            <input type="text" class="form-control" name="nama_perusahaan" placeholder="Enter your company name">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <input type="email" class="form-control" name="email" placeholder="Enter your email">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Phone</label>
-                            <input type="text" class="form-control" placeholder="Enter your phone (+62) 8123123123">
+                            <input type="text" class="form-control" name="no_telp" placeholder="Enter your phone (+62) 8123123123">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="3" placeholder="Write your message"></textarea>
+                            <textarea class="form-control" rows="3" name="pesan" placeholder="Write your message"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary button-contact">Submit</button>
