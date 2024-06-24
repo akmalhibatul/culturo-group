@@ -35,6 +35,14 @@
                         <span>Portofolio</span>
                     </a>
                 </li>
+                <?php if ($level == 'super_admin') : ?>
+                    <li class="nav-link bordered px-3">
+                        <a href="user.php" class="nav-link px-3">
+                            <span class="me-2"><i class="bi bi-person-add"></i></span>
+                            <span>User</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </nav>
     </div>
@@ -77,7 +85,7 @@
                             <div class="col-md-12">
                                 <div class="mb-3 px-2">
                                     <label class="form-label">Gambar portofolio</label>
-                                    <input type="file" id="gambar_portofolio" name="gambar_portofolio" class="form-control" accept="image/png, image/jpeg" required>
+                                    <input type="file" id="gambar_portofolio" name="gambar_portofolio" class="form-control" accept="image/png, image/jpeg, image/svg+xml" required>
                                 </div>
                                 <input type="hidden" name="id_user" value="1"> <!-- Menambahkan input id_user -->
 

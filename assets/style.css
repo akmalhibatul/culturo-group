@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     background-color: #111111;
     color: white;
@@ -80,10 +84,11 @@ body{
 }
 
 .card-project{
-    width: 345px;
-    height: 510px;
-    background: rgba(255,255,255, 0.10);
+    width: 360px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.10);
     padding: 20px;
+    border-radius: 20px;
 }
 
 .card-project .logo-project{
@@ -99,19 +104,22 @@ body{
 }
 
 .service  {
-    background-image: url('bg-s.svg');
+    background-color: #111111;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .card-service{
-    width: 330px;
-    height: 320px;
-    background-color: rgba(0, 0, 0, 0.4); /* 0.4 berarti 40% opacity */
-    text-align: start;
-    padding: 32px;
-    border-radius: 12px;
+    width: 305px;
+    height: 337px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.card-body-service{
+    color: #111111;
+    padding: 20px;
 }
 
 .market{
@@ -149,6 +157,23 @@ body{
 .button-contact:hover{
     background-color: #6F4200;
     border-color: #6F4200;
+}
+
+.navbar-logo{
+    background-color: white;
+    color: #111111;
+    padding-bottom: 50px;
+}
+
+.btn-successpage{
+    text-decoration: none;
+    background-color: #111111;
+    width: 182px;
+    height: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    color: white;
+    font-size: 24px;
 }
 
 

@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fileTypeLogo = $fileLogo['type'];
 
         $fileExtLogo = strtolower(pathinfo($fileNameLogo, PATHINFO_EXTENSION));
-        $allowedLogo = array('jpg', 'jpeg', 'png');
+        $allowedLogo = array('jpg', 'jpeg', 'png', 'svg');
 
         if (in_array($fileExtLogo, $allowedLogo)) {
             if ($fileErrorLogo === 0) {
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $fileTypePortofolio = $filePortofolio['type'];
 
                         $fileExtPortofolio = strtolower(pathinfo($fileNamePortofolio, PATHINFO_EXTENSION));
-                        $allowedPortofolio = array('jpg', 'jpeg', 'png');
+                        $allowedPortofolio = array('jpg', 'jpeg', 'png', 'svg');
 
                         if (in_array($fileExtPortofolio, $allowedPortofolio)) {
                             if ($fileErrorPortofolio === 0) {
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 echo "Terjadi kesalahan saat mengupload gambar portofolio.";
                             }
                         } else {
-                            echo "File tipe tidak diizinkan untuk gambar portofolio. Hanya JPG dan PNG yang diperbolehkan.";
+                            echo "File tipe tidak diizinkan untuk gambar portofolio. Hanya JPG, JPEG, PNG, dan SVG yang diperbolehkan.";
                         }
                     } else {
                         echo "Terjadi kesalahan saat mengupload gambar portofolio.";
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Terjadi kesalahan saat mengupload logo perusahaan.";
             }
         } else {
-            echo "File tipe tidak diizinkan untuk logo perusahaan. Hanya JPG dan PNG yang diperbolehkan.";
+            echo "File tipe tidak diizinkan untuk logo perusahaan. Hanya JPG, JPEG, PNG, dan SVG yang diperbolehkan.";
         }
     } else {
         echo "Terjadi kesalahan saat mengupload logo perusahaan.";

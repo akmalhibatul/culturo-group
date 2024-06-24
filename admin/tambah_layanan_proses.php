@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fileType = $file['type'];
 
         $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-        $allowed = array('jpg', 'jpeg', 'png');
+        $allowed = array('jpg', 'jpeg', 'png', 'svg');
 
         if (in_array($fileExt, $allowed)) {
             if ($fileError === 0) {
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $stmt->bind_param("sssi", $judul_layanan, $deskripsi, $fileNameNew, $id_user);
 
                         if ($stmt->execute()) {
-                            echo "Data berhasil diupload!";
+                            header("Location: layanan.php");
                         } else {
                             echo "Error: " . $stmt->error;
                         }
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Terjadi kesalahan saat mengupload file.";
             }
         } else {
-            echo "File tipe tidak diizinkan. Hanya JPG dan PNG yang diperbolehkan.";
+            echo "File tipe tidak diizinkan. Hanya JPG, JPEG, PNG, dan SVG yang diperbolehkan.";
         }
     } else {
         echo "Tidak ada file yang diupload atau terjadi kesalahan saat mengupload.";

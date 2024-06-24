@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Query untuk mendapatkan data pengguna
-    $sql = "SELECT * FROM user WHERE username = ?";
+    $sql = "SELECT * FROM tb_user WHERE username = ?";
     $stmt = $koneksi->prepare($sql);
     $stmt->bind_param("s", $username);
     $stmt->execute();

@@ -35,6 +35,14 @@
                         <span>Portofolio</span>
                     </a>
                 </li>
+                <?php if ($level == 'super_admin') : ?>
+                    <li class="nav-link bordered px-3">
+                        <a href="user.php" class="nav-link px-3">
+                            <span class="me-2"><i class="bi bi-person-add"></i></span>
+                            <span>User</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </nav>
     </div>
@@ -57,7 +65,12 @@
         <div class="all-student mt-5">
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
+                    <?php
+                    include 'koneksi.php'; // File koneksi ke database
 
+                    $sql = "SELECT id_layanan, judul_layanan, deskripsi, gambar_layanan FROM tb_layanan";
+                    $result = $koneksi->query($sql);
+                    ?>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
@@ -68,19 +81,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>201901002</td>
-                                <td>Arafat</td>
-                                <td>CSE</td>
-                                <td>
-                                    <a href="edit_layanan.php" class="btn btn-warning">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-danger">
-                                        <i class="bi bi-trash-fill"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            <?php
+                            if ($result->num_rows > 0) {
+                                // Output data setiap baris
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td>" . $row["judul_layanan"] . "</td>";
+                                    echo "<td>" . $row["deskripsi"] . "</td>";
+                                    echo "<td><img src='images/layanan/" . $row["gambar_layanan"] . "' alt='Gambar Layanan' width='100'></td>";
+                                    echo "<td>
+                                <a href='edit_layanan.php?id_layanan=" . $row["id_layanan"] . "' class='btn btn-warning'>
+                                    <i class='bi bi-pencil-square'></i>
+                                </a>
+                                <a href='delete_layanan.php?id_layanan=" . $row["id_layanan"] . "' class='btn btn-danger' onclick='return confirm(\"Apakah Anda yakin ingin menghapus layanan ini?\")'>
+                                    <i class='bi bi-trash-fill'></i>
+                                </a>
+                              </td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='4'>Tidak ada data</td></tr>";
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

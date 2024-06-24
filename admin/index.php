@@ -1,5 +1,41 @@
 <?php require_once('header.php') ?>
 
+<?php
+include 'koneksi.php'; // File koneksi ke database
+
+// Query untuk menghitung jumlah data kontak, layanan, dan portofolio
+$sql_kontak = "SELECT COUNT(*) AS total_kontak FROM tb_kontak";
+$sql_layanan = "SELECT COUNT(*) AS total_layanan FROM tb_layanan";
+$sql_portofolio = "SELECT COUNT(*) AS total_portofolio FROM tb_portofolio";
+
+$result_kontak = $koneksi->query($sql_kontak);
+$result_layanan = $koneksi->query($sql_layanan);
+$result_portofolio = $koneksi->query($sql_portofolio);
+
+$total_kontak = 0;
+$total_layanan = 0;
+$total_portofolio = 0;
+
+if ($result_kontak->num_rows > 0) {
+  $row = $result_kontak->fetch_assoc();
+  $total_kontak = $row['total_kontak'];
+}
+
+if ($result_layanan->num_rows > 0) {
+  $row = $result_layanan->fetch_assoc();
+  $total_layanan = $row['total_layanan'];
+}
+
+if ($result_portofolio->num_rows > 0) {
+  $row = $result_portofolio->fetch_assoc();
+  $total_portofolio = $row['total_portofolio'];
+}
+
+
+$sql = "SELECT id_kontak, nama_lengkap, nama_perusahaan, email, no_telp, pesan FROM tb_kontak WHERE CURDATE() = CURDATE()";
+$result = $koneksi->query($sql);
+?>
+
 <!-- sidebar -->
 <div class="offcanvas offcanvas-start bg-purple text-white sidebar-nav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header shadow-sm d-block text-center">
@@ -35,6 +71,14 @@
             <span>Portofolio</span>
           </a>
         </li>
+        <?php if ($level == 'super_admin') : ?>
+          <li class="nav-link bordered px-3">
+            <a href="user.php" class="nav-link px-3">
+              <span class="me-2"><i class="bi bi-person-add"></i></span>
+              <span>User</span>
+            </a>
+          </li>
+        <?php endif; ?>
       </ul>
     </nav>
   </div>
@@ -60,7 +104,7 @@
           <div class="card px-4 border-0 shadow-sm">
             <div class="card-body">
               <div class="fs-5 text-end">
-                100
+                <?php echo $total_kontak; ?>
               </div>
               <div style="margin-top: -10px;" class="fs-3 text-start text-info">
                 <i class="bi bi-person"></i>
@@ -75,7 +119,7 @@
           <div class="card px-4 border-0 shadow-sm">
             <div class="card-body">
               <div class="fs-5 text-end">
-                100
+                <?php echo $total_layanan; ?>
               </div>
               <div style="margin-top: -10px;" class="fs-3 text-start text-warning">
                 <i class="bi bi-bookmark-check"></i>
@@ -90,7 +134,7 @@
           <div class="card px-4 border-0 shadow-sm">
             <div class="card-body">
               <div class="fs-5 text-end">
-                100
+                <?php echo $total_portofolio; ?>
               </div>
               <div style="margin-top: -10px;" class="fs-3 text-start text-danger">
                 <i class="bi bi-file-person-fill"></i>
@@ -120,13 +164,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>201901002</td>
-                <td>Arafat</td>
-                <td>CSE</td>
-                <td>BSc</td>
-                <td>BSc</td>
-              </tr>
+              <?php
+              if ($result->num_rows > 0) {
+                // Output data setiap baris
+                while ($row = $result->fetch_assoc()) {
+                  echo "<tr>";
+                  echo "<td>" . $row["nama_lengkap"] . "</td>";
+                  echo "<td>" . $row["nama_perusahaan"] . "</td>";
+                  echo "<td>" . $row["email"] . "</td>";
+                  echo "<td>" . $row["no_telp"] . "</td>";
+                  echo "<td>" . $row["pesan"] . "</td>";
+                  echo "</tr>";
+                }
+              } else {
+                echo "<tr><td colspan='5'>Tidak ada data</td></tr>";
+              }
+              ?>
             </tbody>
           </table>
         </div>

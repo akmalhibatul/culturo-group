@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['username'])) {
+    header("Location: ../login/");
+    exit;
+}
+
+// Periksa level pengguna
+$level = $_SESSION['level'];
+$username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,10 +42,10 @@
                 <ul class="navbar-nav ms-auto me-md-4 mb-2 mb-lg-0">
                     <li class="nav-item dropdown d-flex text-light">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-regular fa-user"></i> Admin
+                            <i class="fa-regular fa-user"></i> <?= $username; ?>
                         </a>
                         <ul class="dropdown-menu border-0 bg-light ms-auto">
-                            <li><a class="dropdown-item" href="../login/">Logout</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
                 </ul>
                 </li>

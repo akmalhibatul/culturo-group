@@ -35,6 +35,14 @@
                         <span>Portofolio</span>
                     </a>
                 </li>
+                <?php if ($level == 'super_admin') : ?>
+                    <li class="nav-link bordered px-3">
+                        <a href="user.php" class="nav-link px-3">
+                            <span class="me-2"><i class="bi bi-person-add"></i></span>
+                            <span>User</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </nav>
     </div>
@@ -56,6 +64,12 @@
         <div class="all-student mt-5">
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
+
+                    <?php
+                    include 'koneksi.php'; // File koneksi ke database
+                    $sql = "SELECT id_kontak, nama_lengkap, nama_perusahaan, email, no_telp, pesan FROM tb_kontak";
+                    $result = $koneksi->query($sql);
+                    ?>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
@@ -67,15 +81,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>201901002</td>
-                                <td>Arafat</td>
-                                <td>CSE</td>
-                                <td>BSc</td>
-                                <td>BSc</td>
-                            </tr>
+                            <?php
+                            if ($result->num_rows > 0) {
+                                // Output data setiap baris
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td>" . $row["nama_lengkap"] . "</td>";
+                                    echo "<td>" . $row["nama_perusahaan"] . "</td>";
+                                    echo "<td>" . $row["email"] . "</td>";
+                                    echo "<td>" . $row["no_telp"] . "</td>";
+                                    echo "<td>" . $row["pesan"] . "</td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='5'>Tidak ada data</td></tr>";
+                            }
+                            ?>
                         </tbody>
-                    </table>
+                    </table>    
                 </div>
             </div>
         </div>

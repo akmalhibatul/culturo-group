@@ -35,6 +35,14 @@
                         <span>Portofolio</span>
                     </a>
                 </li>
+                <?php if ($level == 'super_admin') : ?>
+                    <li class="nav-link bordered px-3">
+                        <a href="user.php" class="nav-link px-3">
+                            <span class="me-2"><i class="bi bi-person-add"></i></span>
+                            <span>User</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </nav>
     </div>
