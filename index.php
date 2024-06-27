@@ -105,46 +105,27 @@
                     </svg>
                 </div>
                 <div class="mt-5 mb-5">
-                    <div class="row mt-4">
-                        <div class="col-md-4 mb-3">
-                            <div class="card-project">
-                                <div class="logo-project">
-                                    <img src="assets/logo-bio.svg" alt="">
-                                </div>
-                                <div class="deskripsi-project">
-                                    <p>Live Content Experience</p>
-                                </div>
-                                <div class="img-project">
-                                    <img src="assets/project-1.png" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card-project">
-                                <div class="logo-project">
-                                    <img src="assets/logo-bio.svg" alt="">
-                                </div>
-                                <div class="deskripsi-project">
-                                    <p>Community & Media</p>
-                                </div>
-                                <div class="img-project">
-                                    <img src="assets/project-2.png" class="img-fluid">
+                    <div class="row justify-content-center mt-4">
+                        <?php
+                        include('koneksi.php');
+
+                        $sql = mysqli_query($koneksi, "SELECT * FROM tb_portofolio ORDER BY id_portofolio DESC");
+                        while ($qs = mysqli_fetch_array($sql)) {
+                        ?>
+                            <div class="col-md-4 mb-3">
+                                <div class="card-project">
+                                    <div class="logo-project">
+                                        <img src="admin/images/portofolio/<?= $qs['logo_perusahaan']; ?>" alt="" width="208" height="55">
+                                    </div>
+                                    <div class="deskripsi-project">
+                                        <p><?= $qs['deskripsi']; ?></p>
+                                    </div>
+                                    <div class="img-project">
+                                        <img src="admin/images/portofolio/<?= $qs['gambar_portofolio']; ?>" class="img-fluid" width="720" height="480">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card-project">
-                                <div class="logo-project">
-                                    <img src="assets/logo-bio.svg" alt="">
-                                </div>
-                                <div class="deskripsi-project">
-                                    <p>E-Commerce Management</p>
-                                </div>
-                                <div class="img-project">
-                                    <img src="assets/project-3.png" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -159,50 +140,23 @@
                     <p class="text-center ubuntu-medium mb-5" style="font-size: 20px;font-weight: 400;">Key learnings and metrics inform our KPls. We'll focus on those goals that will move the needle, both at a team and corporate levels.</p>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-3">
-                        <div class="card-service">
-                            <div class="card-image">
-                                <img src="assets/ly-1.png" alt="service" class="img-fluid" style="border-radius: 20px;">
-                            </div>
-                            <div class="card-body-service">
-                                <h4>Digital Marketing</h4>
-                                <p>Boost your online presence and drive engagement with tailored digital marketing strategies.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card-service">
-                            <div class="card-image">
-                                <img src="assets/ly-1.png" alt="service" class="img-fluid" style="border-radius: 20px;">
-                            </div>
-                            <div class="card-body-service">
-                                <h4>Digital Marketing</h4>
-                                <p>Boost your online presence and drive engagement with tailored digital marketing strategies.</p>
+                    <?php
+
+                    $query = mysqli_query($koneksi, "SELECT * FROM tb_layanan ORDER BY id_layanan DESC");
+                    while ($ly = mysqli_fetch_array($query)) {
+                    ?>
+                        <div class="col-md-3">
+                            <div class="card-service">
+                                <div class="card-image">
+                                    <img src="admin/images/layanan/<?= $ly['gambar_layanan']; ?>" alt="service" class="img-fluid" style="border-radius: 20px;">
+                                </div>
+                                <div class="card-body-service">
+                                    <h4><?= $ly['judul_layanan']; ?></h4>
+                                    <p><?= $ly['deskripsi']; ?></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card-service">
-                            <div class="card-image">
-                                <img src="assets/ly-1.png" alt="service" class="img-fluid" style="border-radius: 20px;">
-                            </div>
-                            <div class="card-body-service">
-                                <h4>Digital Marketing</h4>
-                                <p>Boost your online presence and drive engagement with tailored digital marketing strategies.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card-service">
-                            <div class="card-image">
-                                <img src="assets/ly-1.png" alt="service" class="img-fluid" style="border-radius: 20px;">
-                            </div>
-                            <div class="card-body-service">
-                                <h4>Digital Marketing</h4>
-                                <p>Boost your online presence and drive engagement with tailored digital marketing strategies.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

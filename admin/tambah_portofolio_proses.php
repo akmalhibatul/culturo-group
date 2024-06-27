@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     $stmt->bind_param("ssss", $deskripsi, $fileNameNewLogo, $fileNameNewPortofolio, $id_user);
 
                                     if ($stmt->execute()) {
-                                        echo "Data portofolio berhasil ditambahkan!";
+                                        header("Location: porto.php");
                                     } else {
                                         echo "Error: " . $stmt->error;
                                     }

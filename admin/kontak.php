@@ -67,7 +67,7 @@
 
                     <?php
                     include 'koneksi.php'; // File koneksi ke database
-                    $sql = "SELECT id_kontak, nama_lengkap, nama_perusahaan, email, no_telp, pesan FROM tb_kontak";
+                    $sql = "SELECT id_kontak, nama_lengkap, nama_perusahaan, email, no_telp, pesan FROM tb_kontak ORDER BY id_kontak DESC";
                     $result = $koneksi->query($sql);
                     ?>
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
@@ -98,7 +98,7 @@
                             }
                             ?>
                         </tbody>
-                    </table>    
+                    </table>
                 </div>
             </div>
         </div>

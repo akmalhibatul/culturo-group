@@ -30,10 +30,6 @@ if ($result_portofolio->num_rows > 0) {
   $row = $result_portofolio->fetch_assoc();
   $total_portofolio = $row['total_portofolio'];
 }
-
-
-$sql = "SELECT id_kontak, nama_lengkap, nama_perusahaan, email, no_telp, pesan FROM tb_kontak WHERE CURDATE() = CURDATE()";
-$result = $koneksi->query($sql);
 ?>
 
 <!-- sidebar -->
@@ -147,44 +143,7 @@ $result = $koneksi->query($sql);
         </div>
       </div>
     </div>
-    <div class="latest-added mt-5">
-      <div class="card border-0 shadow-sm">
-        <div class="card-body">
-          <div class="page-title fs-5 fw-bold mb-4">
-            Kontak Hari ini
-          </div>
-          <table id="datatable" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-              <tr>
-                <th>Nama Lengkap</th>
-                <th>Nama Perusahaan</th>
-                <th>Email</th>
-                <th>No Telp</th>
-                <th>Pesan</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              if ($result->num_rows > 0) {
-                // Output data setiap baris
-                while ($row = $result->fetch_assoc()) {
-                  echo "<tr>";
-                  echo "<td>" . $row["nama_lengkap"] . "</td>";
-                  echo "<td>" . $row["nama_perusahaan"] . "</td>";
-                  echo "<td>" . $row["email"] . "</td>";
-                  echo "<td>" . $row["no_telp"] . "</td>";
-                  echo "<td>" . $row["pesan"] . "</td>";
-                  echo "</tr>";
-                }
-              } else {
-                echo "<tr><td colspan='5'>Tidak ada data</td></tr>";
-              }
-              ?>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+
   </div>
 </main>
 <!-- main content end-->
